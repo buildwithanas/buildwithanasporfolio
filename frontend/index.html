@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anas Amoo — Software Engineer</title>
+<meta name="description" content="Anas Amoo is a self-taught full-stack engineer in Lagos, Nigeria, building production systems with Node.js, Express, MySQL and React.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/jpeg" href="images/amoo.jpeg">
+</head>
+<body>
+
+<!-- Mobile top bar -->
+<div class="topbar">
+  <a href="#top" class="topbar-brand">
+    <img src="images/amoo.jpeg" alt="Anas Amoo">
+    <span>Anas Amoo</span>
+  </a>
+  <button class="topbar-toggle" id="topbarToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<ul class="topbar-menu" id="topbarMenu">
+  <li><a href="#top">Home</a></li>
+  <li><a href="#work">Work</a></li>
+  <li><a href="#approach">Approach</a></li>
+  <li><a href="#skills">Skills</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
+
+<div id="top"></div>
+
+<div class="shell">
+  <!-- Sidebar rail -->
+  <aside class="rail">
+    <a href="#top" class="rail-brand">
+      <img src="images/amoo.jpeg" alt="Anas Amoo">
+      <span>Anas Amoo</span>
+    </a>
+
+    <ul class="rail-nav" id="railNav">
+      <li><a href="#top" class="current">Home</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="rail-status">
+      <div class="status-line">
+        <span class="status-dot"></span>
+        Available for freelance &amp; full-time work
+      </div>
+      <div class="rail-socials">
+        <a href="https://www.linkedin.com/in/anas-amoo-0173523a8" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/buildwithanas" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://twitter.com/Amoo_Anas1" target="_blank" rel="noopener">Twitter / X</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="content">
+
+    <!-- Hero -->
+    <section class="block hero" id="home">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Software engineer, Nigeria</div>
+        <h1>I build the systems institutions actually run on.</h1>
+        <p>I'm a self-taught full-stack engineer working mostly in Node.js MySQL, with React and Vite on the frontend when a project calls for it. I've spent the last two years building the kind of software that has real users with real stakes: hospital staff, school administrators, and small business owners.</p>
+        <p>I care about tech for good using software to chip away at problems in healthcare, education and public services across Africa. I'm currently open to freelance work, internships and fulltime roles where I can keep building things that matter.</p>
+
+        <div class="hero-facts">
+          <div class="hero-fact"><strong>2+</strong>years writing production code</div>
+          <div class="hero-fact"><strong>7+</strong>systems built end to end</div>
+          <div class="hero-fact"><strong>3</strong>stacks I ship comfortably in</div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#work" class="btn btn-primary">View the work</a>
+          <a href="#contact" class="btn btn-outline">Start a conversation</a>
+        </div>
+      </div>
+
+      <figure class="hero-photo">
+        <img src="images/img.jpeg" alt="Portrait of Anas Amoo">
+        <figcaption>Anas Amoo</figcaption>
+      </figure>
+    </section>
+
+    <!-- Work -->
+    <section class="block" id="work">
+      <div class="block-label">Selected work</div>
+      <h2 class="block-title">Three systems, three different kinds of users.</h2>
+
+      <div class="work-row reveal">
+        <div class="work-media">
+          <img src="images/medi.jpeg" alt="MediCore HMS dashboard showing patient admissions, appointments and ward occupancy">
+        </div>
+        <div class="work-copy">
+          <div class="work-tag">Flagship build, in development</div>
+          <h3>MediCore HMS</h3>
+          <p>A multi-tenant hospital management system covering super admins, hospital admins, doctors, nurses, receptionists, pharmacists and lab staff, each with a role-scoped dashboard. Handles admissions, appointments, medical records and billing, backed by a Jest and Supertest suite.</p>
+          <div class="work-stack">
+            <span>React</span><span>Vite</span><span>Zustand</span><span>Node / Express</span><span>MySQL</span><span>JWT</span>
+          </div>
+          <div class="work-links">
+            <a href="https://github.com/buildwithanas/medicore" target="_blank" rel="noopener">Source on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-row reveal">
+        <div class="work-media">
+          <img src="images/litt.jpeg" alt="Little Scholar Islamic School homepage">
+        </div>
+        <div class="work-copy">
+          <div class="work-tag">Client work, live</div>
+          <h3>Little Scholar Islamic School</h3>
+          <p>A public marketing site for a working school, audited and rebuilt to fix missing sections and layout issues. Now planning a fresh Node/Express/MySQL rebuild that consolidates three earlier versions behind one role-based login system for staff, parents and admin.</p>
+          <div class="work-stack">
+            <span>HTML / CSS / JS</span><span>Node / Express</span><span>MySQL</span><span>Django</span>
+          </div>
+          <div class="work-links">
+            <a href="https://buildwithanas.github.io/little_scholars/" target="_blank" rel="noopener">Live site</a>
+            <a href="https://github.com/buildwithanas/little_scholars" target="_blank" rel="noopener">Source on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-row reveal">
+        <div class="work-media">
+          <img src="images/dex.jpeg" alt="Dextra Interiors website hero section">
+        </div>
+        <div class="work-copy">
+          <div class="work-tag">Client work, live</div>
+          <h3>Dextra Interiors</h3>
+          <p>A responsive, multi-page site for an interior design and painting business. Fixed critical CSS bugs left by a prior build, made the whole thing work properly on mobile, and added new homepage sections with scroll reveal driven by IntersectionObserver.</p>
+          <div class="work-stack">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>IntersectionObserver</span>
+          </div>
+          <div class="work-links">
+            <a href="https://github.com/buildwithanas/dextra-interiors" target="_blank" rel="noopener">Source on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-more">
+        <div class="work-more-row">
+          <div>
+            <h4>Aura Luxe</h4>
+            <p>Jewelry e-commerce backend with soft deletes, cart-merge logic, stock re-validation at checkout, and JWT auth with account lockout. A React/Vite/Zustand frontend is next.</p>
+          </div>
+          <div class="work-more-meta">Node / Express, MySQL</div>
+        </div>
+        <div class="work-more-row">
+          <div>
+            <h4>Ledger &amp; Co.</h4>
+            <p>A 71-file vanilla JavaScript e-commerce frontend with a paper-and-ledger design language, a full admin panel, and mock data shaped to match a real API contract.</p>
+          </div>
+          <div class="work-more-meta">Vanilla JS</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach -->
+    <section class="block" id="approach">
+      <div class="block-label">How I work</div>
+      <h2 class="block-title measure">Three things I hold myself to on every project.</h2>
+
+      <div class="principles measure">
+        <div class="principle">
+          <div class="principle-index">01</div>
+          <div>
+            <h3>Ship the whole system</h3>
+            <p>I don't stop at a UI mockup. Every project I list has a real backend behind it: schema design, authentication, and the edge cases that only show up once data starts moving.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-index">02</div>
+          <div>
+            <h3>Write it so someone else can read it</h3>
+            <p>Clean, maintainable code over clever code. MediCore's role-based access and billing logic is covered by a Jest and Supertest suite, not just manual clicking around.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-index">03</div>
+          <div>
+            <h3>Build for the people who need it most</h3>
+            <p>The projects I choose to build lean toward healthcare, education and public services. Technology matters most where the stakes are highest, and that's especially true across Africa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="block" id="skills">
+      <div class="block-label">Capabilities</div>
+      <h2 class="block-title">What I reach for, and when.</h2>
+
+      <table class="matrix measure">
+        <tr>
+          <td>Frontend</td>
+          <td>HTML5, CSS3, JavaScript, React - responsive  interfaces built to work on any screen first, then polished.</td>
+          <!--<td>HTML5, CSS3, JavaScript, React, Vite — responsive interfaces built to work on any screen first, then polished.</td>-->
+        </tr>
+        <tr>
+          <td>Backend</td>
+          <td>Node.js role-based access control is where I spend most of my backend time.</td>
+          <!--<td>Node.js, Express, PHP, Django, REST APIs, JWT authentication — role-based access control is where I spend most of my backend time.</td>-->
+        </tr>
+        <tr>
+          <td>Data</td>
+          <td>MySQL</td>
+<!--<td>MySQL, MySQL2, MongoDB, schema design, query optimization for multi-role systems.</td>-->
+        </tr>
+        <tr>
+          <td>Tools</td>
+          <td>Git, GitHub, VS Code, Ubuntu / Linux, XAMPP.</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Contact -->
+    <section class="block" id="contact">
+      <div class="block-label">Get in touch</div>
+      <h2 class="block-title">Tell me what you're building.</h2>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p style="margin-bottom: 24px; font-size: 0.95rem;">Freelance work, internships, and full-time roles are all fair game. I read every message that comes through this form myself.</p>
+
+          <a class="info-line" href="mailto:anasamoo0704@gmail.com">
+            <div class="label">Email</div>
+            <div class="value">anasamoo0704@gmail.com</div>
+          </a>
+          <a class="info-line" href="tel:07043420968">
+            <div class="label">Phone</div>
+            <div class="value">0704 342 0968</div>
+          </a>
+          <div class="info-line">
+            <div class="label">Location</div>
+            <div class="value">Ogere Remo, Ogun State, Nigeria</div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="field" data-field="name">
+              <label for="cf-name">Name</label>
+              <input type="text" id="cf-name" name="name" autocomplete="name" required maxlength="100">
+              <span class="field-error">Please enter your name.</span>
+            </div>
+            <div class="field" data-field="email">
+              <label for="cf-email">Email</label>
+              <input type="email" id="cf-email" name="email" autocomplete="email" required maxlength="150">
+              <span class="field-error">Please enter a valid email.</span>
+            </div>
+          </div>
+
+          <div class="field" data-field="subject">
+            <label for="cf-subject">Subject (optional)</label>
+            <input type="text" id="cf-subject" name="subject" maxlength="150">
+          </div>
+
+          <div class="field" data-field="message">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" required maxlength="5000"></textarea>
+            <span class="field-error">Please write a message.</span>
+          </div>
+
+          <!-- honeypot: real people never see or fill this in -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="cf-company">Company</label>
+            <input type="text" id="cf-company" name="company" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit" id="submitBtn">
+            <span class="spinner"></span>
+            <span class="btn-text">Send message</span>
+          </button>
+
+          <div class="form-status" id="formStatus"></div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p>&copy; 2026 Anas Amoo.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+  </main>
+</div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
