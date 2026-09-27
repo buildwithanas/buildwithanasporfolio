@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inbox — Anas Amoo</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Key gate -->
+  <div class="gate" id="gate">
+    <h1>Inbox</h1>
+    <p>Enter your admin key to view messages sent from the contact form.</p>
+    <input type="password" id="keyInput" placeholder="Admin key" autocomplete="off">
+    <button class="btn btn-primary" id="unlockBtn">Unlock</button>
+    <p class="gate-error" id="gateError">That key was rejected. Check ADMIN_KEY on the server.</p>
+  </div>
+
+  <!-- Inbox -->
+  <div class="admin-wrap hidden" id="inbox">
+    <div class="admin-head">
+      <h1>Inbox</h1>
+      <span class="count" id="msgCount"></span>
+    </div>
+    <div id="msgList"></div>
+    <div class="empty-state hidden" id="emptyState">No messages yet — once someone submits your contact form, it'll show up here.</div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="config.js"></script>
+  <script>
+    const gate = document.getElementById('gate');
+    const inbox = document.getElementById('inbox');
+    const keyInput = document.getElementById('keyInput');
+    const unlockBtn = document.getElementById('unlockBtn');
+    const gateError = document.getElementById('gateError');
+    const msgList = document.getElementById('msgList');
+    const msgCount = document.getElementById('msgCount');
+    const emptyState = document.getElementById('emptyState');
+    const toast = document.getElementById('toast');
+
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function getKey() { return sessionStorage.getItem('admin_key'); }
+
+    async function loadMessages() {
+      const key = getKey();
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/messages`, {
+          headers: { Authorization: `Bearer ${key}` }
+        });
+        if (res.status === 401) {
+          sessionStorage.removeItem('admin_key');
+          gate.classList.remove('hidden');
+          inbox.classList.add('hidden');
+          gateError.style.display = 'block';
+          return;
+        }
+        const data = await res.json();
+        renderMessages(data.messages || []);
+      } catch (err) {
+        showToast("Couldn't reach the server.");
+      }
+    }
+
+    function renderMessages(messages) {
+      msgList.innerHTML = '';
+      msgCount.textContent = `${messages.length} message${messages.length === 1 ? '' : 's'}`;
+      emptyState.classList.toggle('hidden', messages.length > 0);
+
+      messages.forEach(m => {
+        const card = document.createElement('div');
+        card.className = `msg-card ${m.is_read ? '' : 'unread'}`;
+        const date = new Date(m.created_at).toLocaleString();
+        card.innerHTML = `
+          <div class="msg-top">
+            <div>
+              <span class="msg-from">${escapeHtml(m.name)}</span> —
+              <a class="msg-email" href="mailto:${escapeHtml(m.email)}">${escapeHtml(m.email)}</a>
+            </div>
+            <span class="msg-date">${date}</span>
+          </div>
+          ${m.subject ? `<div class="msg-subject">${escapeHtml(m.subject)}</div>` : ''}
+          <div class="msg-body">${escapeHtml(m.message)}</div>
+          <div class="msg-actions">
+            ${m.is_read ? '' : '<button class="mark-read">Mark read</button>'}
+            <button class="danger delete-msg">Delete</button>
+          </div>
+        `;
+        card.querySelector('.mark-read')?.addEventListener('click', () => markRead(m.id));
+        card.querySelector('.delete-msg').addEventListener('click', () => deleteMessage(m.id));
+        msgList.appendChild(card);
+      });
+    }
+
+    function escapeHtml(str = '') {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    async function markRead(id) {
+      const key = getKey();
+      await fetch(`${API_BASE_URL}/api/messages/${id}/read`, {
+        method: 'PATCH',
+        headers: { Authorization: `Bearer ${key}` }
+      });
+      loadMessages();
+    }
+
+    async function deleteMessage(id) {
+      if (!confirm('Delete this message?')) return;
+      const key = getKey();
+      await fetch(`${API_BASE_URL}/api/messages/${id}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${key}` }
+      });
+      showToast('Message deleted.');
+      loadMessages();
+    }
+
+    unlockBtn.addEventListener('click', () => {
+      const key = keyInput.value.trim();
+      if (!key) return;
+      sessionStorage.setItem('admin_key', key);
+      gateError.style.display = 'none';
+      gate.classList.add('hidden');
+      inbox.classList.remove('hidden');
+      loadMessages();
+    });
+
+    keyInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') unlockBtn.click();
+    });
+
+    if (getKey()) {
+      gate.classList.add('hidden');
+      inbox.classList.remove('hidden');
+      loadMessages();
+    }
+  </script>
+</body>
+</html>
